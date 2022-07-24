@@ -1,0 +1,45 @@
+class Solution:
+    
+    #Function to return the diameter of a Binary Tree.
+    def diameter(self,root):
+        if root is None:
+            return 0
+        diameter =0
+        a=self.height(root, diameter)
+        
+        return a[1] 
+        
+    def height(self, root, diameter):
+        if root is None:
+            return (0,diameter)
+        lheight, diameter = self.height(root.left, diameter)
+        rheight, diameter = self.height(root.right, diameter)
+        diameter = max(diameter, lheight+rheight+1)
+        
+        return (max(lheight, rheight) +1, diameter)
+    
+    
+    #BRUTE
+    class Solution:
+    
+    #Function to return the diameter of a Binary Tree.
+    def height(self, root):
+        if root is None:
+            return 0
+        lheight = self.height(root.left)
+        rheight = self.height(root.right)
+        
+        return max(lheight, rheight) +1
+
+    def diameter(self,root):
+        if root is None:
+            return 0
+        
+        lheight = self.height(root.left)
+        rheight = self.height(root.right)
+        d= lheight+rheight +1
+        
+        dl=self.diameter(root.left)
+        dr=self.diameter(root.right)
+        
+        return (max(dl, dr, d))
