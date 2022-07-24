@@ -1,0 +1,63 @@
+#LEVEL ORDER
+class Solution:
+    #Function to return the level order traversal of a tree.
+    def levelOrder(self,root ):
+        bfs =[]
+        if root is None:
+            return bfs
+        q = [root]
+        while q:
+            root = q.pop(0)
+            bfs.append(root.data)
+            if root.left:
+                q.append(root.left)
+            if root.right:
+                q.append(root.right)
+        return bfs
+        
+   ALTERNATIVE SOLUTION:
+   
+   
+   class Solution:
+    #Function to return the level order traversal of a tree.
+    def levelOrder(self,root ):
+        bfs =[]
+        if root is None:
+            return bfs
+        q = [root]
+        while q:
+            level = []
+            
+            while q:
+                root = q.pop(0)
+                level.append(root.data)
+                if root.left:
+                    q.append(root.left)
+                if root.right:
+                    q.append(root.right)
+                
+                bfs+= level
+        return bfs
+         
+#REVERSE ORDER
+
+def reverseLevelOrder(root):
+    res = []
+    stack =[]
+    if root is None:
+        return res
+    stack =[root]
+    while stack:
+        root = stack.pop(0)
+        res.insert(0,root.data)
+        if root.right:
+            stack.append(root.right)
+        if root.left:
+            stack.append(root.left)
+    return res 
+        
+        
+            
+    
+                
+            
