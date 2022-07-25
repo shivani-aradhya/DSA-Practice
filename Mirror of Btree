@@ -1,0 +1,11 @@
+class Solution:
+    #Function to convert a binary tree into its mirror tree.
+    def mirror(self,root):
+        if not root:
+            return root
+            
+        temp= root.right
+        root.right= self.mirror(root.left)
+        root.left= self.mirror(temp)
+        
+        return root
