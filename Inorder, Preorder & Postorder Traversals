@@ -1,3 +1,4 @@
+#INORDER
 class Solution:
     def InOrder(self,root):
         if not root:
@@ -14,3 +15,73 @@ class Solution:
             root= root.right
             
         return res
+
+#PREORDER
+def preorder(root):
+   
+    #use stack
+    stack=[root]
+    res=[]
+    
+    while stack:
+        root= stack.pop()
+        res.append(root.data)
+        if root.right:
+            stack.append(root.right)
+        if root.left:
+            stack.append(root.left)
+            
+    return res
+ 
+#POSTORDER
+def postOrder(root):
+    
+    stack=[root]
+    res=[]
+    
+    while stack:
+        root= stack.pop()
+        res.insert(0, root.data)
+        if root.left:
+            stack.append(root.left)
+            
+        if root.right:
+            stack.append(root.right)
+        
+    return res
+    
+   #USING ONE STACK
+   
+   def postOrder(root):
+    
+    stack=[]
+    res=[]
+    curr = root
+    
+    def peek(stack): 
+        if len(stack) > 0: 
+            return stack[-1] 
+        return None
+    
+    while curr or stack:
+        while curr:
+            
+            if curr.right is not None:
+                  stack.append(curr.right)
+            stack.append(curr)
+            curr= curr.left
+        
+        curr= stack.pop()
+        
+        if (curr.right is not None and peek(stack)==curr.right):
+            stack.pop()
+            stack.append(curr)
+            curr= curr.right
+        else:
+            res.append(curr.data)
+            curr= None
+                
+                    
+    return res
+    
+ 
