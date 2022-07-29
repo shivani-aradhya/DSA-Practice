@@ -16,3 +16,24 @@ def helper(root, level, res):
     helper(root.right, level+1, res)
     
     
+#ITERATIVE
+
+def LeftView(root):
+    
+    q= [root]
+    res=[]
+    level=[]
+    
+    while q and root is not None:
+        node= q[0]
+        res.append(node.data)
+        for root in q:
+            if root.left:
+                level.append(root.left)
+            if root.right:
+                level.append(root.right)
+            
+        q= level
+        level=[]
+    return res
+    
