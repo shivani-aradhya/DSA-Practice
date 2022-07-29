@@ -1,0 +1,38 @@
+def rightView(self,root):
+        
+        queue=[root]
+        level=[]
+        res=[]
+        
+        while queue and root is not None:
+            for node in queue:
+                if node.left:
+                    level.append(node.left)
+                if node.right:
+                    level.append(node.right)
+                    
+            res.append(node.data)
+            queue= level
+            level=[]
+            
+        return res
+        
+  #RECURSIVE
+  
+    def rightView(self,root):
+        
+        res=[]
+        self.helper(root, 0, res)
+        return res
+        
+    def helper(self, root, level, res):
+        
+        if not root:
+            return 
+        if level== len(res):
+            res.append(root.data)
+            
+        self.helper(root.right, level+1, res)
+        self.helper(root.left, level+1, res)
+        
+        return res
