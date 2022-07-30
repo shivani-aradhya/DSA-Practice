@@ -1,0 +1,16 @@
+class Solution:
+    
+    #Function to return max value that can be put in knapsack of capacity W.
+    def knapSack(self,W, wt, val, n):
+       
+        dp= [[0 for x in range(W + 1)] for x in range(n + 1)]
+        
+        for i in range(1, len(dp)):
+            for j in range(1, len(dp[0])):
+                if j>= wt[i-1]:
+                    remWt = j - wt[i-1]
+                    dp[i][j]= max(dp[i-1][remWt] + val[i-1],  dp[i-1][j] )
+                else:
+                    dp[i][j] = dp[i-1][j]
+                    
+        return dp[n][W]
