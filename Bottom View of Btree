@@ -1,0 +1,24 @@
+class Solution:
+    def bottomView(self, root):
+        ans=[]
+        q=[]
+        seen={}
+        
+        if not root:
+            return ans
+            
+        q.append((root,0))
+        while q:
+            node, line= q.pop(0)
+            if node not in seen:
+                seen[line]= node.data
+            else:
+                seen[line]= node.data
+            if node.left:
+                q.append((node.left, line-1))
+            if node.right:
+                q.append((node.right, line+1))
+                
+        for line in sorted(seen.keys()):
+            ans.append(seen[line])
+        return ans
