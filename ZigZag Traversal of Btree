@@ -1,0 +1,30 @@
+#CREATE TWO STACKS TO REVERSE ORDER
+def zigZagTraversal(self, root):
+        q1=[]
+        q2=[]
+        ans=[]
+        
+        if not root:
+            return ans
+        q1.append(root)
+        
+        while q1 or q2:
+            while q1:
+                node= q1.pop()
+                ans.append(node.data)
+                if node.left:
+                    q2.append(node.left)
+                if node.right:
+                    q2.append(node.right)
+                
+                
+            while q2:
+                node= q2.pop()
+                ans.append(node.data)
+                if node.right:
+                    q1.append(node.right)
+                if node.left:
+                    q1.append(node.left)
+              
+                    
+        return ans
