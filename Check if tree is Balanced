@@ -1,0 +1,37 @@
+
+
+
+
+
+
+
+
+
+
+
+#BRUTE APPROACH O(N2)
+class Solution:
+    def isBalanced(self,root):
+        if not root:
+            return True
+        lh= self.height(root.left)
+        rh= self.height(root.right)
+        
+        if abs(lh-rh)>1:
+            return False
+            
+        lbal= self.isBalanced(root.left)
+        rbal= self.isBalanced(root.right)
+        
+        if lbal and rbal:
+            return True
+        return False
+    
+    def height(self, root):
+        if not root:
+            return 0
+        lh= self.height(root.left)
+        rh= self.height(root.right)
+        
+        return max(lh, rh)+1
+        
