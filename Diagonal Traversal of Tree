@@ -1,0 +1,17 @@
+def diagonal(self,root):
+        if not root:
+            return root
+        
+        q=[root]              # push left child
+        res=[]
+        
+        while q:         
+            for i in range(len(q)):      #traverse diagonal wise
+                node= q.pop(0)
+                while node:              #traverse a root and right child
+                    res.append(node.data)
+                    if node.left:
+                        q.append(node.left)
+                    node= node.right
+            
+        return res 
