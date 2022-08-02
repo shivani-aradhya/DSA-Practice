@@ -1,9 +1,15 @@
-
-
-
-
-
-
+def isBalanced(self,root):
+        
+        def helper(node):
+            if not node:
+                return (0,True)
+                
+            lh, lb= helper(node.left)
+            rh, rb= helper(node.right)
+            
+            return ((max(lh,rh)+1), lb is True and rb is True and abs(lh-rh)<=1)
+            
+        return helper(root)[1]
 
 
 
