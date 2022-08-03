@@ -1,0 +1,35 @@
+def treeFromString(self, s : str) -> Optional['Node']:
+        if not s:
+            return None
+            
+        stack=[]
+        i=0
+        n= len(s)
+        while i<n:
+            if s[i]=='-':
+                i+=1
+                num=0
+                while i<n and s[i].isdigit():
+                    num= num*10+ int(s[i])
+                    i+=1
+                stack.append(Node(-num))
+                i-=1
+            elif s[i].isdigit():
+                
+                num=0
+                while i<n and s[i].isdigit():
+                    num= num*10+ int(s[i])
+                    i+=1
+                stack.append(Node(num))
+                i-=1
+            elif s[i]==')':
+                curr= stack.pop()
+                par= stack[-1]
+                if not par.left:
+                    par.left= curr
+                else:
+                    par.right= curr
+                    
+            i+=1
+            
+        return stack[0]
