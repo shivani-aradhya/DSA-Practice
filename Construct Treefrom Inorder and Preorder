@@ -1,0 +1,16 @@
+def buildtree(self, inorder, preorder, n):
+        
+        if not preorder or not inorder:
+            return None
+        
+        start= preorder[0]   
+        n= len(inorder)   
+        root= Node(start)
+        indexval= inorder.index(start)
+            
+        
+            
+        root.left= self.buildtree(inorder[:indexval], preorder[1:indexval+1],n )
+        root.right= self.buildtree(inorder[indexval+1:], preorder[indexval+1:], n)
+            
+        return root
