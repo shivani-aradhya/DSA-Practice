@@ -1,0 +1,15 @@
+#while q is not empty
+pop the value and call recursion function.
+After hitting base case add rec stack to queue.
+
+
+def rev(q):
+    
+    stack=[]
+    while q:
+        stack.append(q.get())
+        
+    while s:
+        q.put(stack.pop())
+        
+    return q
